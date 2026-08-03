@@ -12,6 +12,7 @@ def send_message(text):
 
     res = requests.post(url, json=payload)
     res.raise_for_status()
+    print(res.text)
 
 
 def send_long_message(text):

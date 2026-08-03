@@ -17,4 +17,4 @@ TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 WIB = timezone(timedelta(hours=7))
 
 # ===== FILTER =====
-KEYWORDS = ["RADAR", "AWOS"]
+KEYWORDS = ["RADAR", "AWOS", "AWS"]

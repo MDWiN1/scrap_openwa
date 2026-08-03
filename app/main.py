@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from app.config import WIB
 from app.openwa_client import get_messages
-from app.parser import parse_message, is_valid_report
+from app.parser import is_valid_report, parse_message
 from app.formatter import format_report
 from app.telegram_client import send_long_message
 
@@ -25,8 +25,10 @@ def get_time_range():
 def filter_messages(messages, start_time, end_time):
     results = []
     for msg in messages:
+        #print(messages)
         body = msg.get("body", "")
         timestamp = msg.get("timestamp")
+        #print(body)
 
         if not body or not timestamp:
             continue
@@ -39,7 +41,9 @@ def filter_messages(messages, start_time, end_time):
         if not is_valid_report(body):
             continue
 
+        #parsed = parse_message(body)
         parsed = parse_message(body)
+        print("ini parsed :", parsed)
         if parsed:
             results.append(parsed)
 
@@ -50,9 +54,12 @@ def main():
     print("Running job...")
 
     messages = get_messages()
+    print(messages)
+    print(len(messages))
     start_time, end_time = get_time_range()
 
     parsed_list = filter_messages(messages, start_time, end_time)
+    print(parsed_list)
 
     report = format_report(parsed_list, start_time, end_time)
 

@@ -1,10 +1,17 @@
 def format_report(parsed_list, start_time, end_time):
-    text = "*Laporan AWOS dan RADAR*\n"
-    text += f"{start_time} → {end_time}\n\n"
+    lines = [
+        "*Laporan AWOS dan RADAR*",
+        f"{start_time} → {end_time}",
+        ""
+    ]
 
     for p in parsed_list:
-        text += f"- {p['type']} {p['station']} → *{p['status']}*\n"
+        site = p.get("site_name", "-")
+        status = p.get("status", "-")
 
-    text += f"\nTotal valid: {len(parsed_list)}"
+        lines.append(f"• {site} → *{status}*")
 
-    return text
+    lines.append("")
+    lines.append(f"Total valid: {len(parsed_list)}")
+
+    return "\n".join(lines)
