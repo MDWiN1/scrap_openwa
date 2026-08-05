@@ -2,7 +2,7 @@ import requests
 from app.config import APIOPENWA,OPENWA_URL_2
 
 
-def get_messages(limit=5):
+def get_messages(limit=300):
     params = {
         "limit": limit
     }

@@ -41,9 +41,8 @@ def filter_messages(messages, start_time, end_time):
         if not is_valid_report(body):
             continue
 
-        #parsed = parse_message(body)
         parsed = parse_message(body)
-        print("ini parsed :", parsed)
+        #print("ini parsed :", parsed)
         if parsed:
             results.append(parsed)
 
@@ -54,12 +53,12 @@ def main():
     print("Running job...")
 
     messages = get_messages()
-    print(messages)
-    print(len(messages))
+    #print(messages)
+    #print(len(messages))
     start_time, end_time = get_time_range()
 
     parsed_list = filter_messages(messages, start_time, end_time)
-    print(parsed_list)
+    #print(parsed_list)
 
     report = format_report(parsed_list, start_time, end_time)
 
