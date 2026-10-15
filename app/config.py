@@ -6,6 +6,7 @@ load_dotenv()
 # ===== OPENWA =====
 OPENWA_URL = os.getenv("OPENWA_URL")
 OPENWA_URL_2 = os.getenv("OPENWA_URL_2")
+OPENWA_URL_3 = os.getenv("OPENWA_URL_3")
 CHAT_ID = os.getenv("SESSION_ID")
 APIOPENWA= os.getenv("APIOPENWA")
 

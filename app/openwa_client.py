@@ -1,5 +1,5 @@
 import requests
-from app.config import APIOPENWA,OPENWA_URL_2
+from app.config import APIOPENWA,OPENWA_URL_3
 
 
 def get_messages(limit=300):
@@ -9,7 +9,7 @@ def get_messages(limit=300):
     headers = {
         "X-API-Key": APIOPENWA
     }
-    res = requests.get(OPENWA_URL_2, headers=headers,params=params, verify=False)
+    res = requests.get(OPENWA_URL_3, headers=headers,params=params, verify=False)
     res.raise_for_status()
     data = res.json()
     return data.get("messages", [])
